@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- made by Roman Hrynevych -->
+<html lang="en">
+<!-- start of head -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaden</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+    <!-- Google Fonts (Nunito and Montserrat) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- link for fontawesome -->
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <!-- link for scss styles -->
+    <link rel="stylesheet" href="scss/music/music.css">
+    <!-- Scripts for preloader and jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<!-- start of body -->
+<body>
+    <!-- header with dropdown menu -->
+    <div class="header-wrapper">
+        <header>
+            <div class="cont header-flex">
+                <a href="index.html" class="logo">JADEN</a>
+                <ul class="menu">
+                    <ul id="burger" onclick="openOrCloseDropdown()">
+                        <li></li>
+                    </ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="music.html">Music</a>
+                    </li>
+                    <li>
+                        <a href="videos.html">Videos</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <ul id="drop-down-menu">
+            <div class="drop-down-flex">
+                <li class="nav-link">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="nav-link">
+                    <a href="music.html">Music</a>
+                </li>
+                <li class="nav-link">
+                    <a href="videos.html">Videos</a>
+                </li>
+                <li class="nav-link">
+                    <a href="about.html">About</a>
+                </li>
+            </div>
+        </ul>    
+    </div>
+    <!-- main part of file -->
+    <div class="container">
+        <div id="billboardcover"></div>
+        <div class="cont">
+            <div class="billboard">
+                <div class="title">Дискографія Jaden</div>
+                <div class="text">Нижче наведені всі альбоми виконавця, натискай, та слухай</div>
+            </div>
+            <div class="albums">
+                <div class="album" id="coverOfAlbum1" onclick="transformToFullScreen(this.id)">
+                    <img src="img/albums_covers/SYRE_cover.jpg" alt="SYRE">
+                    <div class="title">SYRE</div>
+                    <div class="links">
+                        <a href=""></a>
+                        <a href=""></a>
+                        <a href=""></a>
+                        <a href=""></a>
+                    </div>
+                    <div class="spotifyiframe">iframe_SYRE</div>
+                </div>
+                <div class="album" id="coverOfAlbum2" onclick="transformToFullScreen(this.id)">
+                    <img src="img/albums_covers/The_Sunset_Tapes_cover.jpg" alt="The Sunset Tapes">
+                    <div class="title">The Sunset Tapes</div>
+                    <div class="spotifyiframe">iframe_SunsetTapes</div>
+                </div>
+                <div class="album" id="coverOfAlbum3" onclick="transformToFullScreen(this.id)">
+                    <img src="img/albums_covers/ERYS_cover.jpg" alt="ERYS">
+                    <div class="title">ERYS</div>
+                    <div class="spotifyiframe">iframe_ERYS</div>
+                </div>
+                <div class="album" id="coverOfAlbum4" onclick="transformToFullScreen(this.id)">
+                    <img src="img/albums_covers/CTV3_cover.jpg" alt="CTV3">
+                    <div class="title">CTV3</div>
+                    <div class="spotifyiframe">iframe_CTV3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Spotify widgets -->
+    <div class="content-focus" id="popup">
+        <div class="wrapper" onclick="removeDiv()"></div>
+        <div class="content">
+            <div class="cloned">
+                <iframe class="hidden" id="iframe_SYRE"
+                    src="https://open.spotify.com/embed/album/4IFpj2jyRcugt1yzH82m3E" width="100%" frameborder="0"
+                    allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe class="hidden" id="iframe_SunsetTapes"
+                    src="https://open.spotify.com/embed/album/5SEBhuhm9MbbRg3YOOuaCR" width="100%" frameborder="0"
+                    allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe class="hidden" id="iframe_ERYS"
+                    src="https://open.spotify.com/embed/album/6cKBoHXh7dKn2gVsGniZ58" width="100%" frameborder="0"
+                    allowtransparency="true" allow="encrypted-media"></iframe>
+                <iframe class="hidden" id="iframe_CTV3"
+                    src="https://open.spotify.com/embed/album/2NuZ1TloomufyKf57ZLBQn" width="100%" frameborder="0"
+                    allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <footer>
+        <div class="footer-cont">
+            <div class="social-media">
+                <a href="https://www.facebook.com/officialjaden"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/c.syresmith/?hl=en"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/jaden"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UC-w7D3GsJecTHA8Sjcyn6sQ"><i class="fab fa-youtube"></i></a>
+            </div> 
+            <div class="break-mobile"></div> 
+            <a href="about.html" class="copyright"><i class="far fa-copyright"></i> Гриневич Роман</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/menu-mobile-drop-down-menu.js"></script>
+    <script src="/js/music_popup.js"></script>
+</body>
+</html>
+

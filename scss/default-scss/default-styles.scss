@@ -1,0 +1,156 @@
+// default colors and font-familys
+$color-yellow: #F8E82A;
+$color-orange: #FFB800;
+$color-red: #F75990;
+$color-purple: #595FF7;
+$color-dark: #282828;
+$color-black: #000;
+$color-white: #fff;
+$color-white-opacity: rgba(255, 255, 255, .85);
+$color-dark-opacity: rgba(0, 0, 0, 0.4);
+$color-dark-opacity-more: rgba(0, 0, 0, 0.55);
+$color-darker-opacity: rgba(40, 40, 40, 0.9);
+$color-white-for-font: #eee;
+$font-Nunito: 'Nunito', sans-serif;
+$font-Montserrat: 'Montserrat', sans-serif;
+// mixin function for add Proxima Nova font from fyles .ttf
+@mixin font($font-family, $font-file) {
+    @font-face {
+      font-family: $font-family;
+      src: url($font-file+'.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  }
+// loading Proxima Nova  fonts 
+@include font('Proxima-L', '../../fonts/ProximaNova-Light');
+@include font('Proxima-R', '../../fonts/ProximaNova-Regular');
+@include font('Proxima-SB', '../../fonts/ProximaNova-Semibold');
+@include font('Proxima-B', '../../fonts/ProximaNova-Bold');
+@include font('Proxima-EXB', '../../fonts/ProximaNova-Extrabld');
+
+// transition time function for different transition-timing-functions 
+@mixin transition-time($sec) {
+    transition: $sec;
+    -o-transition: $sec;
+    -moz-transition: $sec;
+    -webkit-transition: $sec;
+    -ms-transition: $sec;
+}
+
+// different transition-timing-function mixin
+@mixin transition-ease($sec) {
+    transition-timing-function: ease;
+    @include transition-time($sec);
+}
+
+@mixin transition-ease-in-out($sec) {
+    transition-timing-function: ease-in-out;
+    @include transition-time($sec);
+}
+
+@mixin transition-ease-in($sec) {
+    transition-timing-function: ease-in;
+    @include transition-time($sec);
+}
+
+@mixin transition-ease-out($sec) {
+    transition-timing-function: ease-out;
+    @include transition-time($sec);
+}
+
+// styles for scroll styles in Chrome
+%background-gradient-red-to-yellow{
+    background:-moz-linear-gradient(top, $color-red 15%, $color-yellow 79%); 
+    background: -webkit-linear-gradient(341deg, $color-red 15%, $color-yellow 79%); 
+    background: linear-gradient(341deg, $color-red 15%, $color-yellow 79%);
+}
+
+%background-gradient-purple-to-red{
+    background:-moz-linear-gradient(top, $color-red 15%, $color-purple 79%); 
+    background: -webkit-linear-gradient(341deg, $color-red 15%, $color-purple 79%); 
+    background: linear-gradient(341deg, $color-red 15%, $color-purple 79%);
+}
+
+// styles for scroll Chrome
+%scroll-popup {
+    &::-webkit-scrollbar {
+        width: 13px;
+        cursor: pointer;
+    }
+    &::-webkit-scrollbar-thumb {
+        @extend %background-gradient-purple-to-red;
+        border-radius: 15px;
+        border: solid 3px $color-dark;
+        @include transition-ease(0.3s);
+        &:hover{
+            @extend %background-gradient-red-to-yellow;
+        }
+    }
+    &::-webkit-scrollbar-track{
+        background: $color-dark;
+    }
+}
+
+// styles for background clip fonts
+%background-clip-font{
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color:transparent;
+}
+// preloader styles
+#preloader {
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $color-dark;
+    color: $color-yellow;
+    font-size: 120px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 100vh;
+    @media only screen and (max-device-width: 761px) {
+        font-size: 60px;
+    }
+    @media only screen and (min-device-width: 762px) and (max-device-width: 800px) {
+        font-size: 32px;
+    }
+    @include transition-ease-in-out(0.3s);
+    animation: animation-preloader 1.75s infinite;
+    @keyframes animation-preloader{
+        0% {
+            transform: scale(1);
+            text-shadow: none;
+        }
+        50%{
+            transform: scale(1.3);
+            text-shadow: 0px 2px 0px $color-red, 0px 4px 0px $color-purple;
+        }
+        100%{
+            transform: scale(1);
+            text-shadow: none;
+        }
+    } 
+}
+
+%bg-image {
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body {
+    background: $color-white;
+    color: $color-dark;
+    font-family: $font-Nunito, sans-serif;
+    @extend %scroll-popup;
+}
+
+
+

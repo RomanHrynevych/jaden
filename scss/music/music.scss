@@ -1,0 +1,156 @@
+@import "../main/main.scss";
+
+.overflow-hidden{
+    overflow: hidden;
+}
+
+.break{
+    flex-basis: 100%;
+    height: 0;
+}
+
+.break-column {
+    flex-basis: 100%;
+    width: 0;
+}
+
+.container {
+    img {
+        @extend %bg-image;
+    }
+
+    .cont{
+        @media only screen and (max-device-width: 761px) {
+            width: 95%;
+        }
+    }
+
+    #billboardcover{
+        background: url('../../img/music.jpg') no-repeat center center / cover;
+        width: 100%;
+        height: 85vh;
+        @media only screen and (max-device-width: 761px) {
+            background-image: url('../../img/phone_wallpapers/music_header.jpg');
+            background-position: top center;
+            height: 75vh;
+        }
+    }
+    .billboard {
+        @media only screen and (max-device-width: 761px) {
+            padding-top: 40px;
+            font-size: 32px;
+        }
+        .title {
+            padding-bottom: 10px;
+            @media only screen and (max-device-width: 761px) {
+                line-height: 40px;
+                padding-bottom: 30px;
+            }
+        }
+        .text {
+            font-size: 24px;
+            padding-bottom: 0;
+
+            &::after {
+                content: ")";
+                color: $color-purple;
+            }
+        }
+    }
+
+    .albums {
+        height: 500px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        @media only screen and (max-device-width: 761px) {
+            height: auto;
+            margin: 50px 0;
+            flex-direction: column;
+        }
+        .album {
+            width: 20%;
+            @include transition-ease(0.5s);
+            @media only screen and (max-device-width: 761px) {
+                width: 75%;
+                margin: 30px 0;
+            }
+            &:hover {
+                width: 25%;
+                cursor: pointer;
+                @media only screen and (max-device-width: 761px) {
+                    width: 95%;
+                }
+            }
+            .spotifyiframe{
+                display: none;
+            }
+            .title{
+                display: none;
+            }
+        }
+    }
+}
+.content-focus {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    background: no-repeat center center / cover;
+    @include transition-ease-in-out(0.4s);
+    &.active{
+        visibility: visible;
+    }
+    .wrapper {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+        background: $color-dark-opacity;
+    }
+    .content{
+        $border-radius-for-spotify: 15px;
+        position: relative;
+        transform: scale(0);
+        z-index: 2;
+        width: 30%;
+        height: 50%;
+        overflow-y: hidden;
+        color: $color-dark;
+        top: 25%;
+        left: 35%;
+        border-radius: $border-radius-for-spotify;
+        @include transition-ease-in(0.3s);
+        @extend %scroll-popup;
+        @media only screen and (max-device-width: 761px) {
+            width: 75%;
+            left: 12.5%;
+        }
+        &.active{
+            @include transition-ease-out(0.5s);
+            transform: scale(1);
+        }
+
+        iframe {
+            border: none;
+            border-radius: $border-radius-for-spotify;
+            @include transition-ease(0.5s);
+            &.hidden{
+                display: none;
+                opacity: 0;
+            }
+        }
+
+
+        .cloned{
+            position: relative;
+            width: 100%;
+            z-index: 4;
+        }
+    }
+}

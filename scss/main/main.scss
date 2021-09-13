@@ -1,0 +1,125 @@
+@import "../default-scss/reset.scss";
+@import "../default-scss/default-styles.scss";
+@import "../default-scss/default-header-footer.scss";
+    
+.overflow-hidden{
+    overflow: hidden;
+}
+
+.break{
+    flex-basis: 100%;
+    height: 0;
+}
+
+.break-column {
+    flex-basis: 100%;
+    width: 0;
+}
+
+.container {
+    width: 100%;
+
+    .cont{
+        @media only screen and (max-device-width: 761px) {
+            width: 95%;
+        }
+    }
+
+    #billboardcover{
+        background: url('../../img/main.jpg') no-repeat center center / cover;
+        width: 100%;
+        height: 85vh;
+        @media only screen and (max-device-width: 761px) {
+            background-image: url('../../img/phone_wallpapers/main_header.jpg');
+            height: 75vh;
+        }
+    }
+    #footercover{
+        background: url('../../img/footer.jpg') no-repeat center center / cover;
+        width: 100%;
+        height: 90vh;
+        @media only screen and (max-device-width: 761px) {
+            background-image: url('../../img/phone_wallpapers/main_footer.jpg');
+            background-position: center -250px;
+            height: 45vh;
+        }
+    }
+    .billboard{
+        padding-top: 80px;
+        color: $color-dark;
+        font-family: $font-Nunito;
+        text-align: center;
+        font-size: 38px;
+        letter-spacing: -0.02em;
+        font-weight: 600;
+        @media only screen and (max-device-width: 761px) {
+            padding-top: 40px;
+            font-size: 32px;
+        }
+        .title{
+            padding-bottom: 50px;
+            font-weight: 800;
+            line-height: 45px;
+            position: relative;
+            @media only screen and (max-device-width: 761px) {
+                line-height: 40px;
+            }
+            &::after{
+                content: "!";
+                color: $color-red;
+            }
+        }
+        .text{
+            font-size: 21px;
+            line-height: 32px;
+            padding-bottom: 70px;
+            a{ 
+                padding: 0 3px;
+                text-decoration: none;
+                font-weight: 700;
+                position: relative;
+                white-space: nowrap;
+                @include transition-ease(0.3s);
+                &.red-hover{
+                    color: $color-red;
+                    &::after{
+                        background: $color-red;
+                    }
+                }
+                &.orange-hover{
+                    color: $color-orange;
+                    &::after{
+                        background: $color-orange;
+                    }
+                }
+                &.purple-hover{
+                    color: $color-purple;
+                    &::after{
+                        background: $color-purple;
+                    }
+                }
+                &::after{
+                    content: "";
+                    position: absolute;
+                    bottom: -1px;
+                    right: -1%;
+                    height: 100%;
+                    width: 0;
+                    z-index: -1;
+                    @include transition-ease(0.3s);
+                }
+                &:hover::after{
+                    left: -1%;
+                    width: 102%;
+                }
+                &:hover{
+                    color: $color-white;
+                }
+            }
+        }
+    }
+}
+
+
+
+
